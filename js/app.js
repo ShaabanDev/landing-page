@@ -22,8 +22,8 @@
  * Define Global Variables
  *
  */
- const sections = Array.from(document.querySelectorAll("section"));
- const ulElement = document.querySelector("#navbar__list");
+const sections = Array.from(document.querySelectorAll("section"));
+const ulElement = document.querySelector("#navbar__list");
 /**
  * End Global Variables
  * Start Helper Functions
@@ -31,17 +31,17 @@
  */
 
 // function that creates  the nav bar
- const createNavBar = () => {
-    for (let i = 0; i < sections.length; i++) {
-      const liElement = document.createElement("li");
-      const linkElement = document.createElement("a");
-      linkElement.id = `sectionLink${i + 1}`;
-      linkElement.className = "menu__link";
-      linkElement.textContent = `Section ${i + 1}`;
-      liElement.appendChild(linkElement);
-      ulElement.appendChild(liElement);
-    }
-  };
+const createNavBar = () => {
+  for (let i = 0; i < sections.length; i++) {
+    const liElement = document.createElement("li");
+    const linkElement = document.createElement("a");
+    linkElement.id = `sectionLink${i + 1}`;
+    linkElement.className = "menu__link";
+    linkElement.textContent = `Section ${i + 1}`;
+    liElement.appendChild(linkElement);
+    ulElement.appendChild(liElement);
+  }
+};
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -50,30 +50,34 @@
 
 // build the nav
 
-
-
 createNavBar();
 const links = Array.from(document.querySelectorAll("a"));
 
-
-  
-
 // Add class 'active' to section when near top of viewport
+window.addEventListener("scroll", (e) => {
+  sections.forEach((sec) => {
+    const secOffset = Math.floor(sec.getBoundingClientRect().top);
 
+    if (secOffset < 200 && secOffset >= -200) {
+      sec.classList.add("your-active-class");
+    } else {
+      sec.classList.remove("your-active-class");
+    }
+  });
+});
 // Scroll to anchor ID using scrollTO event
 links.forEach((link, index) => {
-    
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const domHeight =
-        sections[index].getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({
-        top: domHeight,
-        behavior: "smooth",
-      });
-      console.log(sections[index])
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const domHeight =
+      sections[index].getBoundingClientRect().top + window.pageYOffset;
+    window.scrollTo({
+      top: domHeight,
+      behavior:"smooth",
     });
+    console.log(sections[index]);
   });
+});
 /**
  * End Main Functions
  * Begin Events
