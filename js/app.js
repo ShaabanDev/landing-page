@@ -56,10 +56,24 @@ createNavBar();
 const links = Array.from(document.querySelectorAll("a"));
 
 
+  
+
 // Add class 'active' to section when near top of viewport
 
 // Scroll to anchor ID using scrollTO event
-
+links.forEach((link, index) => {
+    
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const domHeight =
+        sections[index].getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: domHeight,
+        behavior: "smooth",
+      });
+      console.log(sections[index])
+    });
+  });
 /**
  * End Main Functions
  * Begin Events
