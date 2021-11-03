@@ -69,9 +69,22 @@ section {
     margin: 0;
     text-align: right;
 }
-
+/* .navbar__menu  a {
+    float: left;
+    display: block;
+    color: #2b0a0a;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  .navbar__menu  a:hover{
+      background-color: #cc1;
+  } */
 .navbar__menu li {
     display: inline-block;
+    color: #000;
+    margin-inline: 5px;
 }
 
 .navbar__menu .menu__link {
@@ -80,12 +93,16 @@ section {
     font-weight: bold;
     text-decoration: none;
     color: #000;
+   
 }
-
+.navbar__menu .menu__link:active{
+    background: #333;
+}
 .navbar__menu .menu__link:hover {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;
+    cursor: pointer;
 }
 
 /* Header Styles */
